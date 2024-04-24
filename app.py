@@ -26,7 +26,13 @@ def hello():
    else:
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
-
+     
+@app.route('/api/hello_world', methods=['POST'])
+def hello_world():
+   data = request.get_json()
+   name = data.get('name')
+   result = "Hello World a bit different: " + name
+   return result 
 
 if __name__ == '__main__':
    app.run()
